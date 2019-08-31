@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--这个文件的作用第连接最底层的数据库-->
+<!--namespace对应的是接口UserDAO相对于java目录的路径-->
+<mapper namespace="com.etc.dao.UserDAO">
+    <!--这里的id对面的是本页面厦门的resultMap   type对应的是login方法的获取的对象user-->
+    <resultMap id="user" type="user">
+        <!--resultMap 里面主键属性用id里面property对应User的属性column对应的是数据库t_user的字段 里面的普通属性用result-->
+        <id property="userName" column="user_name"></id>
+        <result property="userPass" column="user_pass"></result>
+    </resultMap>
+    <!--这里备注看select的备注即可了解   其中#{}里面的是reg方法中User对象的属性-->
+    <insert id="reg">
+        INSERT INTO t_user(user_name,user_pass,user_tel,user_real_name) VALUES(#{userName},#{userPass},#{userTel},#{userRealName})
+    </insert>
+    <!--这里的id对应的是UserDAO里面的方法，rusultMap代表的是本页面顶端的resultMap的id-->
+    <!-- 里面是写的sql语句，同时具体值应该用#{}来转成动态的sql，#{}里面写的是对应的在UserDAO接口login方法相对应的参数-->
+    <select id="login" resultMap="user">
+        SELECT * FROM t_user WHERE user_name=#{name}  and user_pass=#{password}
+    </select>
+</mapper>
