@@ -52,7 +52,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>4.13.1</version>
         </dependency>
 
         <!--控制日志信息输送的目的地是控制台、文件、GUI组件、甚至是套接口服务器 -->
